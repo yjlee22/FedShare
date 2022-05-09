@@ -55,7 +55,6 @@ class ModelUpdate(object):
                     if iter > 0: 
                         for w, w_t in zip(local_net.parameters(), net.parameters()):
                             loss += self.args.mu / 2. * torch.pow(torch.norm(w.data - w_t.data), 2)
-                            w_t.grad.data += self.args.mu * (w_t.data - w.data)
                         
                 loss.backward()
                 
